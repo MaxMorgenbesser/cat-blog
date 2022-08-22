@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react"
 
-const GetCatPics = () =>{
+const GetCatPics = () => {
    const [catPics,setCatPics]=useState([])
-
+let [key,setKey]=useState(0)
 useEffect(()=>{
     fetch('http://localhost:4000/get5')
     .then(res=>res.json())
@@ -10,7 +10,7 @@ useEffect(()=>{
     .catch(err=>alert(err))
 },[])
 return(<>{catPics.map(pic=>{
-    return(<img src={pic.Image}/>)
+    return(<img key={key++}src={pic.Image}/>)
 })}</>)
 
 
